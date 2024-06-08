@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweep</title>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 20px 30px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            display: flex;
+            padding: 10px 30px;
+            justify-content: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .submitBtn {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="card" style="position: fixed; top: 38%; left: 20px;">
+        <div class="cardChild" id="flagCard">
+            <h2>🚩 0</h2>
+        </div>
+        <div class="cardChild" id="boomCard">
+            <h2>💣 10</h2>
+        </div>
+    </div>
+
+    <div class="tooltip-container" style="position: fixed; top: 50px; right: 10px;">
+        <span class="tooltip" id="tooltip">HELLO👋</span>
+        <span class="text" id="text">游客模式🤚</span>
+        <span id="openModalButton">点我登录!👆</span>
+    </div>
+
+        <button class="Btn"style="position: fixed; bottom: 20px; left: 20px;">
+            <svg class="svgIcon" viewBox="0 0 496 512" height="1.4em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                </path>
+            </svg>
+            <span class="githubtext" onclick="toGithub()">Github</span>
+        </button>
+
+
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>在排名中记录我</h3>
+                <button class="noselect" id="closeModalButton"><span class="texts">BACK</span><span class="icon"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                            </path>
+                        </svg></span></button>
+            </div>
+            <div class="modal-body">
+                <form class="formField">
+                    <input required="" type="text" id="username" />
+                    <span>name</span>
+                </form>
+                <form class="formField">
+                    <input required="" type="text" id="password" />
+                    <span>password</span>
+                </form>
+                <button class="comic-button" onclick="login()">OK!</button>
+            </div>
+
+        </div>
+    </div>
+
+    <nav class="menu">
+        <ul>
+            <li><button class="freePlay" id="freePlay">随意游玩</button></li>
+            <li><button class="competition" id="competition">比赛</button></li>
+
+        </ul>
+
+    </nav>
+
+
+    <div class="input-container" id="inputBar">
+        <input type="text" id="input1" placeholder="请输入宽">
+        <input type="text" id="input2" placeholder="请输入高">
+        <input type="text" id="input3" placeholder="请输入雷的数量">
+    </div>
+
+    <div class="button-container" id="submitBtnBar">
+        <button id="submitBtn" class="submitBtn">确定/重开</button>
+    </div>
+
+    <div class="stopwatch" id="timerBar">
+        <div id="timer">⏰ 00:00:00</div>
+    </div>
+    <div id="gridContainer" class="container"></div>
+
+
+
+    <button class="RankingButton" onclick="openDrawer()">排 名</button>
+
+    <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+    <div class="drawer" id="drawer">
+        <div class="drawer-header">
+
+        </div>
+        <div class="drawer-content">
+            <div class="container">
+                <h3>排 名 顺 序</h3>
+                <div class="tabs">
+                    <input type="radio" id="radio-1" name="tabs" checked="">
+                    <label class="tab" for="radio-1">简单</label>
+                    <input type="radio" id="radio-2" name="tabs">
+                    <label class="tab" for="radio-2">普通</label>
+                    <input type="radio" id="radio-3" name="tabs">
+                    <label class="tab" for="radio-3">困难</label>
+                    <span class="glider"></span>
+                </div>
+            </div>
+            <style>
+
+            </style>
+
+
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>UID</th>
+                            <th>Name</th>
+                            <th>总挑战次数</th>
+                            <th>简单最快时间</th>
+                            <th>普通最快时间</th>
+                            <th>困难最快时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

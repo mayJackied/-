@@ -1,0 +1,915 @@
+.cell-unShow {
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url('photo/floor.png');
+}
+
+.cell-isFlag {
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url('photo/flag.png');
+}
+
+.stopwatch {
+    margin: 50px;
+    text-align: center;
+}
+
+#timer {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    padding: 10px;
+    text-align: center;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.menu button {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.menu button:hover {
+    background-color: #f2f2f2;
+}
+
+.menu .primary {
+    background-color: #FF69B4;
+    color: #FFFFFF;
+}
+
+.menu .primary:hover {
+    background-color: #FF1493;
+}
+
+.menu button:hover {
+    background-color: #f2f2f2;
+}
+
+
+.customCheckBoxHolder {
+    margin: 5px;
+    display: flex;
+}
+
+.customCheckBoxHolder {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    margin: 5px;
+    flex-wrap: wrap;
+    /* 允许换行 */
+}
+
+.customCheckBoxWrapper {
+    margin: 0 10px;
+    /* 设置左右间隔为10px */
+}
+
+.customCheckBox {
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 8px;
+    background-color: rgba(0, 0, 0, 0.16);
+    border-radius: 0px;
+    color: rgba(255, 255, 255, 0.7);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 300ms;
+    transition-property: color, background-color, box-shadow;
+    display: flex;
+    height: 32px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+    outline: none;
+    justify-content: center;
+    min-width: 55px;
+}
+
+.customCheckBox:hover {
+    background-color: #2c2c2c;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBox .inner {
+    font-size: 18px;
+    font-weight: 900;
+    pointer-events: none;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 300ms;
+    transition-property: transform;
+    transform: translateY(0px);
+}
+
+.customCheckBox:hover .inner {
+    transform: translateY(-2px);
+}
+
+/* Multiple Checkboxes can be chained together for a radio input */
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-right: 0px;
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: 0px;
+}
+
+.customCheckBoxInput {
+    display: none;
+}
+
+.customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox {
+    background-color: #2d6737;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox .inner {
+    transform: translateY(-2px);
+}
+
+.customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox:hover {
+    background-color: #34723f;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+    transform: translateY(-2px);
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -60%;
+    /* Initially hidden */
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+
+    transition: right 0.4s ease;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.drawer.open {
+    right: 0;
+    /* Show drawer */
+}
+
+.drawer-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.drawer-content {
+    font-size: 16px;
+    height: calc(100% - 40px);
+    /* Adjust height to fit within drawer */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: block;
+    pointer-events: none;
+    /* Prevents clicks when not visible */
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+    /* Allows clicks when visible */
+}
+
+.RankingButton {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.RankingButton {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 0;
+    /* 确保按钮右侧没有外边距 */
+    padding: 20px 10px;
+    /* 根据需要调整内边距 */
+    background-color: #409EFF;
+    color: white;
+    border: none;
+    border-top-left-radius: 16px;
+    /* 保持上部左侧圆角 */
+    border-bottom-left-radius: 16px;
+    /* 保持下部左侧圆角 */
+    cursor: pointer;
+    white-space: nowrap;
+    /* 防止文字换行 */
+    writing-mode: vertical-rl;
+    /* 文字竖直排列 */
+    text-orientation: mixed;
+    /* 保持英文和数字正常显示 */
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f9f9f9;
+    color: #9e9e9e;
+    font-weight: normal;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+td {
+    color: #616161;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+tr:hover td {
+    background-color: #f5f5f5;
+}
+
+
+.tabs {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 99px;
+}
+
+.tabs * {
+    z-index: 2;
+}
+
+.container input[type="radio"] {
+    display: none;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 50px;
+    font-size: .8rem;
+    color: black;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: .8rem;
+    height: .8rem;
+    position: absolute;
+    top: 10px;
+    left: 30%;
+    font-size: 10px;
+    margin-left: 0.75rem;
+    border-radius: 50%;
+    margin: 0px;
+    background-color: #e6eef9;
+    transition: 0.15s ease-in;
+}
+
+.container input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
+.container input[type="radio"]:checked+label>.notification {
+    background-color: #185ee0;
+    color: #fff;
+    margin: 0px;
+}
+
+.container input[id="radio-1"]:checked~.glider {
+    transform: translateX(0);
+}
+
+.container input[id="radio-2"]:checked~.glider {
+    transform: translateX(100%);
+}
+
+.container input[id="radio-3"]:checked~.glider {
+    transform: translateX(200%);
+}
+
+.glider {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    width: 50px;
+    background-color: #e6eef9;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+}
+
+@media (max-width: 700px) {
+
+    .tabs {
+        transform: scale(0.6);
+    }
+}
+
+/* This is an example, feel free to delete this code */
+.tooltip-container {
+    --background: #333333;
+    --color: #d3d3d3;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color);
+    padding: 0.7em 1.8em;
+    border-radius: 8px;
+    /* text-transform: uppercase; */
+    height: 60px;
+    width: 180px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--color);
+}
+
+.text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transform-origin: -100%;
+    transform: scale(1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltip-container span:last-child {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 1;
+    background-color: var(--background);
+    z-index: -1;
+    border: 2px solid var(--background);
+    transform: scale(0);
+    transform-origin: 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: grid;
+    place-items: center;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.3em 0.6em;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: var(--background);
+    z-index: -1;
+    border-radius: 8px;
+    scale: 0;
+    transform-origin: 0 0;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.tooltip::before {
+    position: absolute;
+    content: "";
+    height: 0.6em;
+    width: 0.6em;
+    bottom: -0.2em;
+    left: 50%;
+    transform: translate(-5%) rotate(45deg);
+    background: var(--background);
+}
+
+.tooltip-container:hover .tooltip {
+    top: -50%;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    scale: 1;
+    animation: shake 0.5s ease-in-out both;
+}
+
+.tooltip-container:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    color: white;
+    border-color: transparent;
+}
+
+.tooltip-container:hover span:last-child {
+    transform: scale(1);
+    left: 0;
+}
+
+.tooltip-container:hover .text {
+    opacity: 0;
+    top: 0%;
+    left: 100%;
+    transform: scale(0);
+}
+
+@keyframes shake {
+    0% {
+        rotate: 0;
+    }
+
+    25% {
+        rotate: 7deg;
+    }
+
+    50% {
+        rotate: -7deg;
+    }
+
+    75% {
+        rotate: 1deg;
+    }
+
+    100% {
+        rotate: 0;
+    }
+}
+
+
+
+
+
+
+
+.button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    width: 500px;
+    border-radius: 5px;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-header h4 {
+    margin: 0;
+}
+
+.close-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formField {
+    margin: 10px;
+    position: relative;
+}
+
+.formField input {
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 16px;
+    font-weight: 550;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 0 5px transparent;
+}
+
+.formField input:hover,
+.formField input:focus {
+    box-shadow: 0 0 0 2px #333;
+}
+
+.formField span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 8px 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.formField input:focus+span,
+.formField input:valid+span {
+    transform: translateY(-32px) translateX(-5px) scale(0.95);
+    transition: 0.3s ease-in-out;
+}
+
+
+.noselect {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    background: #e62222;
+}
+
+.noselect,
+.noselect span {
+    transition: 200ms;
+}
+
+.noselect .texts {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+.noselect .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noselect svg {
+    width: 15px;
+    fill: #eee;
+}
+
+.noselect:hover {
+    background: #ff3636;
+}
+
+.noselect:hover .texts {
+    color: transparent;
+}
+
+.noselect:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.noselect:focus {
+    outline: none;
+}
+
+.noselect:active .icon svg {
+    transform: scale(0.8);
+}
+
+.comic-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff5252;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.comic-button:hover {
+    background-color: #fff;
+    color: #ff5252;
+    border: 2px solid #ff5252;
+    box-shadow: 5px 5px 0px #ff5252;
+}
+
+.comic-button:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.comic-button {
+    display: grid;
+    place-items: center;
+    /* 其他样式 */
+}
+.modal-body {
+    display: flex;
+    /* 启用Flexbox布局 */
+    flex-direction: column;
+    /* 设置为垂直排列 */
+    align-items: stretch;
+    /* 根据需要调整子元素的对齐方式 */
+    justify-content: center;
+    /* 如果需要垂直居中按钮 */
+    margin-top: 20px;
+    /* 根据需要调整间距 */
+}
+
+.card {
+    box-sizing: border-box;
+    width: 190px;
+    height: 240px;
+    background: rgba(232, 232, 232, 0.58);
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    flex-direction: column;
+}
+
+.card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+}
+
+.card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.cardChild {
+    margin-bottom: 25px;
+    width: 140px;
+    height: 60px;
+    /* 根据需要调整高度 */
+    background-color: white;
+    border-radius: 50px;
+    /* 设置圆角半径为10px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 轻微的阴影 */
+    transition: box-shadow 0.3s, background-color 0.3s;
+    /* 平滑过渡 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    text-align: center;
+    /* 使文本居中 */
+}
+
+.cardChild:hover {
+    background-color: #e9e9e9;
+    /* 鼠标悬停时背景变暗 */
+    box-shadow: 0 8px 16px rgba(126, 126, 126, 0.2);
+    /* 鼠标悬停时阴影加深 */
+}
+
+.cardChild:active {
+    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.2);
+    /* 按下时的阴影效果 */
+    transform: translateY(0.5px);
+    /* 模拟按下的动作 */
+}
+
+.submitBtn {
+    padding: 15px 30px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.submitBtn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0) 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.submitBtn:hover::after {
+    transform: scale(4);
+}
+
+.submitBtn:hover {
+    border-color: #666666;
+    background: #292929;
+}
+
+.Btn {
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .4s;
+    cursor: pointer;
+    position: relative;
+    background-color: rgb(31, 31, 31);
+    overflow: hidden;
+}
+
+.svgIcon {
+    transition-duration: .3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.githubtext {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    width: 120px;
+    font-weight: 600;
+    opacity: 0;
+    transition-duration: .4s;
+}
+
+.Btn:hover {
+    width: 110px;
+    transition-duration: .4s;
+    border-radius: 30px;
+}
+
+.Btn:hover .githubtext {
+    opacity: 1;
+    transition-duration: .4s;
+}
+
+.Btn:hover .svgIcon {
+    opacity: 0;
+    transition-duration: .3s;
+}
